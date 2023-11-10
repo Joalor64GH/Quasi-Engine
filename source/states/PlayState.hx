@@ -21,52 +21,52 @@ import backend.Conductor;
 
 class PlayState extends MusicBeatState
 {
-    public var camGame:FlxCamera;
-    public var camHud:FlxCamera;
+    	public var camGame:FlxCamera;
+    	public var camHud:FlxCamera;
 
-    override public function create()
-    {
-        camGame = new FlxCamera();
-        camHud = new FlxCamera();
+    	override public function create()
+    	{
+        	camGame = new FlxCamera();
+        	camHud = new FlxCamera();
 
-        camGame.bgColor.alpha = 0;
-        camHud.bgColor.alpha = 0;
+        	camGame.bgColor.alpha = 0;
+        	camHud.bgColor.alpha = 0;
 
-        var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-        add(bg);
+        	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+        	add(bg);
 
-        var text:FlxText = new FlxText(0, 0, 0, "Nothing much.", 12);
+        	var text:FlxText = new FlxText(0, 0, 0, "Nothing much.", 12);
 		text.scrollFactor.set();
 		text.setFormat("VCR OSD Mono", 26, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-        text.screenCenter(X);
+        	text.screenCenter(X);
 		add(text);
 
-        bg.cameras = [camHud];
-        text.cameras = [camHud];
+        	bg.cameras = [camHud];
+        	text.cameras = [camHud];
 
-        super.create();
-    }
+        	super.create();
+    	}
 
-    override public function update(elapsed:Float)
-    {
-        super.update(elapsed);
+    	override public function update(elapsed:Float)
+    	{
+        	super.update(elapsed);
 
-        if (FlxG.keys.justPressed.ENTER)
-        {
-            openSubState(new PauseSubState());
-        }
-    }
+        	if (FlxG.keys.justPressed.ENTER)
+        	{
+            		openSubState(new PauseSubState());
+        	}
+    	}
 
-    override function stepHit()
-    {
-        super.stepHit();
-    }
+    	override function stepHit()
+    	{
+        	super.stepHit();
+    	}
 
-    override function beatHit()
-    {
-        super.beatHit();
+    	override function beatHit()
+    	{
+        	super.beatHit();
 
-        if (curBeat % 2 == 0)
-            FlxTween.tween(camHud, {zoom:1.03}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
-    }
+        	if (curBeat % 2 == 0)
+            		FlxTween.tween(camHud, {zoom:1.03}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+    	}
 }
