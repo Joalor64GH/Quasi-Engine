@@ -7,13 +7,15 @@ import flixel.util.FlxColor;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+import lime.app.Application;
+
 import backend.MusicBeatState;
 
 class MainMenuState extends MusicBeatState
 {
     	public static var curSelected:Int = 0;
 
-    	var menuItems:FlxSprite;
+    	var menuItems:FlxTypedGroup<FlxSprite>;
     	var optionShit:Array<String> = ['story_mode', 'freeplay', 'mods', 'credits', 'options'];
 
     	var magenta:FlxSprite;
