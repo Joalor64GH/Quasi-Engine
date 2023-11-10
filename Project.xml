@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<!-- _______ Application _______ -->
+
+	<app title="Quasi-Engine" file="Quasi" main="Main" version="0.0.1" company="Joalor64GH" />
+
+	<app preloader="flixel.system.FlxPreloader" />
+
+	<set name="SWF_VERSION" value="11.8" />
+
+	<!-- _______ Window _______ -->
+
+	<!--All targets-->
+	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
+
+	<!--HTML5-->
+	<window if="html5" resizable="false" />
+
+	<!--Desktop-->
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+
+	<!--Mobile-->
+	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+
+    <!-- _______ Custom Defines _______ -->
+
+    <define name="MODS_ALLOWED" if="desktop" />
+    <define name="SCRIPTS_ALLOWED" if="desktop" />
+    <define name="CRASH_HANDLER" if="desktop release" />
+    <define name="VIDEOS_ALLOWED" if="web || windows || android" unless="32bits" />
+
+	<!-- _______ Paths _______ -->
+
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
+	<set name="BUILD_DIR" value="export/release" unless="debug" />
+
+	<source path="source" />
+	<assets path="assets"/>
+
+	<!-- _______ Haxelibs _______ -->
+
+    <!-- Flixel -->
+	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
+
+    <!-- Other Stuff-->
+    <haxelib name="hscript" if="SCRIPTS_ALLOWED"/>
+    <haxelib name="hxCodec" if="VIDEOS_ALLOWED"/>
+
+    <haxelib name="discord_rpc" if="desktop"/>
+    <haxelib name="polymod-joalor64" if="MODS_ALLOWED"/>
+    <haxelib name="hxcpp-debug-server" if="desktop debug"/>
+
+	<!-- _______ Haxedefines _______ -->
+
+	<!--Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
+	<haxedef name="FLX_NO_MOUSE" if="mobile" />
+	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
+	<haxedef name="FLX_NO_TOUCH" if="desktop" />
+
+	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
+	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+
+	<!--Enable this for Nape release builds for a serious peformance improvement-->
+	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!-- fix for macros -->
+	<haxeflag name="--macro" value="allowPackage('flash')" />
+	<haxeflag name="--macro" value="include('my.pack')" />
+
+	<!-- _______ Icons _______ -->
+
+    <assets path='iconOG.png' rename='icon.png' if="linux" />
+
+    <icon path="icon.png" />
+
+</project>
