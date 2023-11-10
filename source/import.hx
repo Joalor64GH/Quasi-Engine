@@ -1,4 +1,4 @@
-if !macro
+#if !macro
 import Paths;
 
 import backend.CoolUtil;
