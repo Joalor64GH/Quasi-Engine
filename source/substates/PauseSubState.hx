@@ -6,6 +6,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.ui.FlxButton;
 
+import backend.MusicBeatState;
 import backend.MusicBeatSubstate;
 
 class PauseSubState extends MusicBeatSubstate

@@ -1,4 +1,4 @@
-package base;
+package backend;
 
 import flixel.FlxG;
 import flixel.FlxSubState;
