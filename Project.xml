@@ -23,12 +23,12 @@
 	<!--Mobile-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
 
-    <!-- _______ Custom Defines _______ -->
+    	<!-- _______ Custom Defines _______ -->
 
-    <define name="MODS_ALLOWED" if="desktop" />
-    <define name="SCRIPTS_ALLOWED" if="desktop" />
-    <define name="CRASH_HANDLER" if="desktop release" />
-    <define name="VIDEOS_ALLOWED" if="web || windows || android" unless="32bits" />
+    	<define name="MODS_ALLOWED" if="desktop" />
+    	<define name="SCRIPTS_ALLOWED" if="desktop" />
+    	<define name="CRASH_HANDLER" if="desktop release" />
+    	<define name="VIDEOS_ALLOWED" if="web || windows || android" unless="32bits" />
 
 	<!-- _______ Paths _______ -->
 
@@ -38,19 +38,21 @@
 	<source path="source" />
 	<assets path="assets"/>
 
+	<assets path="mods" if="MODS_ALLOWED"/>
+
 	<!-- _______ Haxelibs _______ -->
 
-    <!-- Flixel -->
+    	<!-- Flixel -->
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
-    <!-- Other Stuff-->
-    <haxelib name="hscript" if="SCRIPTS_ALLOWED"/>
-    <haxelib name="hxCodec" if="VIDEOS_ALLOWED"/>
+    	<!-- Other Stuff-->
+    	<haxelib name="hscript" if="SCRIPTS_ALLOWED"/>
+    	<haxelib name="hxCodec" if="VIDEOS_ALLOWED"/>
 
-    <haxelib name="discord_rpc" if="desktop"/>
-    <haxelib name="polymod-joalor64" if="MODS_ALLOWED"/>
-    <haxelib name="hxcpp-debug-server" if="desktop debug"/>
+    	<haxelib name="discord_rpc" if="desktop"/>
+    	<haxelib name="polymod-joalor64" if="MODS_ALLOWED"/>
+    	<haxelib name="hxcpp-debug-server" if="desktop debug"/>
 
 	<!-- _______ Haxedefines _______ -->
 
@@ -71,8 +73,8 @@
 
 	<!-- _______ Icons _______ -->
 
-    <assets path='iconOG.png' rename='icon.png' if="linux" />
+    	<assets path='iconOG.png' rename='icon.png' if="linux" />
 
-    <icon path="icon.png" />
+    	<icon path="icon.png" />
 
 </project>
