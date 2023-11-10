@@ -53,7 +53,7 @@ class PlayState extends MusicBeatState
 
         	if (FlxG.keys.justPressed.ENTER)
         	{
-            		openSubState(new PauseSubState());
+            		openSubState(new substates.PauseSubState());
         	}
     	}
 
