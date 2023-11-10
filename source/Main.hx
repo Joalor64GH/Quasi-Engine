@@ -17,8 +17,8 @@ using StringTools;
 
 class Main extends Sprite
 {
-    public static var gameHeight:Int = 1280; // game height (in pixels)
-    public static var gameWidth:Int = 720; // game width (in pixels)
+	public static var gameHeight:Int = 1280; // game height (in pixels)
+	public static var gameWidth:Int = 720; // game width (in pixels)
 	
 	public static var toast:ToastCore; // notification thing, credits go to MAJigsaw77
 
