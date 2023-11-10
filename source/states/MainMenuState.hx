@@ -11,23 +11,23 @@ import backend.MusicBeatState;
 
 class MainMenuState extends MusicBeatState
 {
-    public static var curSelected:Int = 0;
+    	public static var curSelected:Int = 0;
 
-    var menuItems:FlxSprite;
-    var optionShit:Array<String> = ['story_mode', 'freeplay', 'mods', 'credits', 'options'];
+    	var menuItems:FlxSprite;
+    	var optionShit:Array<String> = ['story_mode', 'freeplay', 'mods', 'credits', 'options'];
 
-    var magenta:FlxSprite;
+    	var magenta:FlxSprite;
 
-    override public function create()
-    {
-        var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
-        add(bg);
+    	override public function create()
+    	{
+        	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
+        	add(bg);
 
-        magenta = new FlxSprite().loadGraphic(Paths.image('menuBGMagenta'));
-        magenta.visible = false;
-        add(magenta);
+        	magenta = new FlxSprite().loadGraphic(Paths.image('menuBGMagenta'));
+        	magenta.visible = false;
+        	add(magenta);
 
-        menuItems = new FlxTypedGroup<FlxSprite>();
+        	menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
 		var scale:Float = 1;
@@ -47,24 +47,24 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 		}
 
-        var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "v" + Application.current.meta.get('version') - FNF v0.2.7.1, 12);
+        	var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "v" + Application.current.meta.get('version') - FNF v0.2.7.1, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
 		changeItem();
 
-        super.create();
-    }
+        	super.create();
+    	}
 
-    var selectedSomethin:Bool = false;
+    	var selectedSomethin:Bool = false;
 
-    override public function update(elapsed:Float)
-    {
-        if (!selectedSomethin)
+    	override public function update(elapsed:Float)
+    	{
+        	if (!selectedSomethin)
 		{
 			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN) 
-            {
+            		{
 				changeItem(FlxG.keys.justPressed.UP ? -1 : 1);
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
@@ -72,49 +72,49 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.keys.justPressed.ESCAPE)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-                Main.toast.create('Nope.', 0xFFFFFF00, "Can't do that. I didn't even make TitleState yet.");
+                		Main.toast.create('Nope.', 0xFFFFFF00, "Can't do that. I didn't even make TitleState yet.");
 			}
 
 			if (FlxG.keys.justPressed.ENTER)
 			{
-                if (optionShit[curSelected] == 'story_mode' || optionShit[curSelected] == 'mods' || optionShit[curSelected] == 'credits' || optionShit[curSelected] == 'options') 
+                		if (optionShit[curSelected] == 'story_mode' || optionShit[curSelected] == 'mods' || optionShit[curSelected] == 'credits' || optionShit[curSelected] == 'options') 
 				{
 					Main.toast.create('Hey!', 0xFFFFFF00, 'These are not done yet! Come back later!');
 				}
-                else
-                {
-				    selectedSomethin = true;
-				    FlxG.sound.play(Paths.sound('confirmMenu'));
+                		else
+                		{
+				    	selectedSomethin = true;
+				    	FlxG.sound.play(Paths.sound('confirmMenu'));
 
-				    FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+				    	FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
-				    menuItems.forEach(function(spr:FlxSprite)
-				    {
-					    if (curSelected != spr.ID)
-					    {
-						    FlxTween.tween(spr, {alpha: 0}, 0.4, {
-							    ease: FlxEase.quadOut,
-							    onComplete: function(twn:FlxTween)
-							    {
-								    spr.kill();
-							    }
-						    });
-					    }
-					    else
-					    {
-						    FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-						    {
-							    var daChoice:String = optionShit[curSelected];
+				    	menuItems.forEach(function(spr:FlxSprite)
+				    	{
+					    	if (curSelected != spr.ID)
+					    	{
+						    	FlxTween.tween(spr, {alpha: 0}, 0.4, {
+							    	ease: FlxEase.quadOut,
+							    	onComplete: function(twn:FlxTween)
+							    	{
+								    	spr.kill();
+							    	}
+						    	});
+					    	}
+					    	else
+					    	{
+						    	FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+						    	{
+							    	var daChoice:String = optionShit[curSelected];
 
-							    switch (daChoice)
-							    {
-								    case 'freeplay':
-									    MusicBeatState.switchState(new states.PlayState());
-							    }
-						    });
-					    }
-				    });
-                }
+							    	switch (daChoice)
+							    	{
+								    	case 'freeplay':
+									    	MusicBeatState.switchState(new states.PlayState());
+							    	}
+						    	});
+					    	}
+				    	});
+                		}
 			}
 		}
 
@@ -124,9 +124,9 @@ class MainMenuState extends MusicBeatState
 		{
 			spr.screenCenter(X);
 		});
-    }
+    	}
 
-    function changeItem(huh:Int = 0)
+    	function changeItem(huh:Int = 0)
 	{
 		curSelected += huh;
 
